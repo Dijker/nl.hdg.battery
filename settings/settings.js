@@ -89,7 +89,7 @@ function onHomeyReady(homeyReady){
                     if (err) return Homey.alert('getDevices ' + err);
                     this.devices = Object.keys(result).map(key => result[key]).filter(d => d.capabilitiesObj.measure_battery);
                     //$('#devices-list').show();
-                    //document.getElementById('devices-list').style.display = 'block';
+                    document.getElementById('devices-list').style.display = 'block';
                 });
             },
             getZone: function (device) {
