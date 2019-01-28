@@ -87,8 +87,10 @@ function onHomeyReady(homeyReady){
                 return Homey.api('GET', '/devices', null, (err, result) => {
                     loading = false;
                     if (err) return Homey.alert('getDevices ' + err);
-                    this.devices = Object.keys(result).map(key => result[key]).filter(d => d.capabilitiesObj.measure_battery);
-                    //$('#devices-list').show();
+                    this.devices = result
+                        ? Object.keys(result).map(key => result[key]).filter(d => d && d.capabilitiesObj && d.capabilitiesObj.measure_battery)
+                        : [];
+
                     document.getElementById('devices-list').style.display = 'block';
                 });
             },
