@@ -1,0 +1,44 @@
+{
+  "id": "nl.hdg.battery",
+  "version": "1.0.0",
+  "compatibility": ">=2.0.0",
+  "sdk": 2,
+  "name": {
+    "en": "Battery monitor",
+    "nl": "Batterij monitor"
+  },
+  "description": {
+    "en": "Keep track of the battery status of your devices",
+    "nl": "Houd de batterij status van al je apparaten in de gaten"
+  },
+  "category": [
+    "tools"
+  ],
+  "permissions": [ "homey:manager:api"],
+  "images": {
+    "large": "/assets/images/large.jpg",
+    "small": "/assets/images/small.jpg"
+  },
+  "author": {
+    "name": "Harrie de Groot",
+    "email": "harriedegroot@gmail.com"
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Harrie de Groot",
+        "email": "harriedegroot@gmail.com"
+      }
+    ]
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "harriedegroot"
+      }
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/harriedegroot/nl.hdg.battery/issues"
+  }
+}
