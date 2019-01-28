@@ -18,6 +18,10 @@ It's Homey 2.0 for now...
 
 ## Change Log
 
+#### 1.0.1
+
+- BUG fix loading devices
+
 #### 1.0.0
 
 - Initial release for Homey firmware v2.0
