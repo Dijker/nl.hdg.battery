@@ -40,34 +40,34 @@ const defaultSettings = {
 
 function onHomeyReady(homeyReady){
     Homey = homeyReady;
-    Homey.ready();
+    
     batterySettings = defaultSettings;
     
-    Homey.get('settings', function (err, savedSettings) {
+    //Homey.get('settings', function (err, savedSettings) {
             
-        if (err) {
-            Homey.alert(err);
-        } else if (savedSettings) {
-            batterySettings = savedSettings;
-        }
+    //    if (err) {
+    //        Homey.alert(err);
+    //    } else if (savedSettings) {
+    //        batterySettings = savedSettings;
+    //    }
             
-        for (let key in defaultSettings) {
-            if (defaultSettings.hasOwnProperty(key)) {
-                const el = document.getElementById(key);
-                if (el) {
-                    switch (typeof defaultSettings[key]) {
-                        case 'boolean':
-                            el.checked = batterySettings[key];
-                            break;
-                        default:
-                            el.value = batterySettings[key];
-                    }
-                }
-            }
-        }
-    });
+    //    for (let key in defaultSettings) {
+    //        if (defaultSettings.hasOwnProperty(key)) {
+    //            const el = document.getElementById(key);
+    //            if (el) {
+    //                switch (typeof defaultSettings[key]) {
+    //                    case 'boolean':
+    //                        el.checked = batterySettings[key];
+    //                        break;
+    //                    default:
+    //                        el.value = batterySettings[key];
+    //                }
+    //            }
+    //        }
+    //    }
+    //});
         
-    showTab(1);
+    //showTab(1);
     getLanguage();
 
     new Vue({
@@ -86,9 +86,10 @@ function onHomeyReady(homeyReady){
             getDevices() {
                 return Homey.api('GET', '/devices', null, (err, result) => {
                     loading = false;
-                    //$('.devices-list').show();
                     if (err) return Homey.alert('getDevices ' + err);
-                    this.devices = Object.keys(result).map(key => result[key]);
+                    this.devices = Object.keys(result).map(key => result[key]).filter(d => d.capabilitiesObj.measure_battery);
+                    //$('#devices-list').show();
+                    //document.getElementById('devices-list').style.display = 'block';
                 });
             },
             getZone: function (device) {
@@ -140,7 +141,9 @@ function onHomeyReady(homeyReady){
                 return this.zones;
             }
         }
-    })
+    });
+
+    
 }
 
 function showTab(tab){
@@ -160,6 +163,7 @@ function getLanguage() {
             if (el) {
                 el.style.display = "inline";
             }
+            Homey.ready();
         });
     } catch (e) {
         Homey.alert('Failed to get language: ' + e);
@@ -167,6 +171,7 @@ function getLanguage() {
         if (el) {
             el.style.display = "inline";
         }
+        Homey.ready();
     }
 }
 

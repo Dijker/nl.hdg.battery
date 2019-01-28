@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="styles.css" />
     
     <script type="text/javascript" src="/homey.js" data-origin="settings"></script>
-    <script type="text/javascript" src="/manager/webserver/assets/js/jquery.js"></script>
+    <!--<script type="text/javascript" src="/manager/webserver/assets/js/jquery.js"></script>-->
     <!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>-->
@@ -34,17 +34,19 @@
 
                     </path>
                 </div>
-                <div class="rTable" class="devices-list">
-                    <div class="rTableRow devices" v-for="device in devices.filter(d => d.capabilitiesObj.measure_battery)">
-                        <div class="rTableCell line">
-                            <div class="icon-cell" v-html="getIcon(device)"></div>
-                        </div>
-                        <div class="rTableCell line scrollable-text">
-                            {{ getZone(device) }}<br />
-                            <b>{{device.name}}</b>
-                        </div>
-                        <div class="rTableCell line settings-item-last">
-                            <span v-html="getBattClass(device.capabilitiesObj)"></span>
+                <div id="devices-list">
+                    <div class="rTable" >
+                        <div class="rTableRow devices" v-for="device in devices">
+                            <div class="rTableCell line">
+                                <div class="icon-cell" v-html="getIcon(device)"></div>
+                            </div>
+                            <div class="rTableCell line scrollable-text">
+                                {{ getZone(device) }}<br />
+                                <b>{{device.name}}</b>
+                            </div>
+                            <div class="rTableCell line settings-item-last">
+                                <span v-html="getBattClass(device.capabilitiesObj)"></span>
+                            </div>
                         </div>
                     </div>
                 </div>

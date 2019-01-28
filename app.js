@@ -22,13 +22,21 @@ class BatteryMonitor extends Homey.App {
     }
 
     async getDevices() {
-        const api = await this.getApi();
-        return await api.devices.getDevices();
+        try {
+            const api = await this.getApi();
+            return await api.devices.getDevices();
+        } catch (e) {
+            Log.error(e);
+        }
     }
 
     async getZones() {
-        const api = await this.getApi();
-        return await api.zones.getZones();
+        try {
+            const api = await this.getApi();
+            return await api.zones.getZones();
+        } catch (e) {
+            Log.error(e);
+        }
     }
 
     async settingsChanged() {
