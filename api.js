@@ -10,14 +10,18 @@ module.exports = [
         role: 'owner',
         requires_authorization: true,
         fn: function (args, callback) {
-            Homey.app.getDevices()
-                .then(res => {
-                    callback(null, res);
-                })
-                .catch(error => {
-                    Log.error(error);
-                    callback(error, null);
-                });
+            if (Homey && Homey.app) {
+                Homey.app.getDevices()
+                    .then(res => {
+                        callback(null, res);
+                    })
+                    .catch(error => {
+                        Log.error(error);
+                        callback(error, null);
+                    });
+            } else {
+                callback('App not ready, please try again');
+            }
         }
     },
     {
@@ -27,14 +31,18 @@ module.exports = [
         role: 'owner',
         requires_authorization: true,
         fn: function (args, callback) {
-            Homey.app.getZones()
-                .then(res => {
-                    callback(null, res);
-                })
-                .catch(error => {
-                    Log.error(error);
-                    callback(error, null);
-                });
+            if (Homey && Homey.app) {
+                Homey.app.getZones()
+                    .then(res => {
+                        callback(null, res);
+                    })
+                    .catch(error => {
+                        Log.error(error);
+                        callback(error, null);
+                    });
+            } else {
+                callback('App not ready, please try again');
+            }
         }
     },
     {
@@ -44,9 +52,13 @@ module.exports = [
         role: 'owner',
         requires_authorization: true,
         fn: function (args, callback) {
-            let result = Homey.app.settingsChanged();
-            if (result instanceof Error) callback(result);
-            callback(null, result);
+            if (Homey && Homey.app) {
+                let result = Homey.app.settingsChanged();
+                if (result instanceof Error) callback(result);
+                callback(null, result);
+            } else {
+                callback('App not ready, please try again');
+            }
         }
     },
     {
@@ -56,9 +68,13 @@ module.exports = [
         role: 'owner',
         requires_authorization: true,
         fn: function (args, callback) {
-            let result = Log.getLogLines();
-            if (result instanceof Error) callback(result);
-            callback(null, result);
+            if (Homey && Homey.app) {
+                let result = Log.getLogLines();
+                if (result instanceof Error) callback(result);
+                callback(null, result);
+            } else {
+                callback(null, []);
+            }
         }
     }
 ];

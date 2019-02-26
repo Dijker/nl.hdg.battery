@@ -79,14 +79,20 @@ function onHomeyReady(homeyReady){
         methods: {
             getZones() {
                 return Homey.api('GET', '/zones', null, (err, result) => {
-                    if (err) return Homey.alert('getZones ' + err);
+                    if (err) {
+                        setTimeout(() => this.getZones(), 1000);
+                        return;
+                    }
                     this.zones = result;
                 });
             },
             getDevices() {
                 return Homey.api('GET', '/devices', null, (err, result) => {
                     loading = false;
-                    if (err) return Homey.alert('getDevices ' + err);
+                    if (err) {
+                        setTimeout(this.getDevices(), 1000);
+                        return;
+                    }
                     this.devices = result
                         ? Object.keys(result).map(key => result[key]).filter(d => d && d.capabilitiesObj && d.capabilitiesObj.measure_battery)
                         : [];
