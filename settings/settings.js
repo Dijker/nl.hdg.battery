@@ -79,20 +79,22 @@ function onHomeyReady(homeyReady){
         methods: {
             getZones() {
                 return Homey.api('GET', '/zones', null, (err, result) => {
-                    if (err) {
-                        setTimeout(() => this.getZones(), 1000);
-                        return;
-                    }
+                    if (err) return Homey.alert(err);
+                    //if (err) {
+                    //    setTimeout(() => this.getZones(), 1000);
+                    //    return;
+                    //}
                     this.zones = result;
                 });
             },
             getDevices() {
                 return Homey.api('GET', '/devices', null, (err, result) => {
                     loading = false;
-                    if (err) {
-                        setTimeout(this.getDevices(), 1000);
-                        return;
-                    }
+                    if (err) return Homey.alert(err);
+                    //if (err) {
+                    //    setTimeout(this.getDevices(), 1000);
+                    //    return;
+                    //}
                     this.devices = result
                         ? Object.keys(result).map(key => result[key]).filter(d => d && d.capabilitiesObj && d.capabilitiesObj.measure_battery)
                         : [];
