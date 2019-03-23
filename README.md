@@ -1,25 +1,19 @@
-# Battery monitor
-
+# Battery monitor  
+  
 With this app you can monitor the battery status of all your devices.  
-
-## Functionality
-
-Just adds an app settings page with all battery powered devices and their state.
-
-## Homey firmware v1.5 and v2
-
-It's Homey 2.0 only...
-
-## Future
-
-- Add push notifications
-- Add flow cards
-- etc.
-
+  
+## Functionality  
+  
+Just adds an app settings page with all battery powered devices and their current battery level.  
+  
+## Flow  
+  
+TIP: There is a nice forum post on [how to get a notification when battery level changed for a device](https://community.athom.com/t/get-a-notification-on-your-phone-on-battery-level-change).    
+  
 ## Change Log  
   
 #### 1.0.4  
-- Updated readme
+- Added a reference to the forum post on how to to get battery low notifications
 
 #### 1.0.3  
 - Athom api upgrade

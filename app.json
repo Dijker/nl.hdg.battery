@@ -1,6 +1,6 @@
 {
   "id": "nl.hdg.battery",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "compatibility": ">=2.0.0",
   "sdk": 2,
   "name": {
@@ -9,7 +9,7 @@
   },
   "description": {
     "en": "Keep track of the battery status of your devices",
-    "nl": "Houd de batterij status van al je apparaten in de gaten"
+    "nl": "Houd de batterijstatus van al je apparaten in de gaten"
   },
   "category": [
     "tools"
