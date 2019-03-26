@@ -11,6 +11,10 @@ Just adds an app settings page with all battery powered devices and their curren
 TIP: There is a nice forum post on [how to get a notification when battery level changed for a device](https://community.athom.com/t/get-a-notification-on-your-phone-on-battery-level-change).    
   
 ## Change Log  
+
+#### 2.0.5  
+- Small fix in error handling of api calls
+- Moved to 2.x version scheme
   
 #### 1.0.4  
 - Added a reference to the forum post on how to to get battery low notifications
