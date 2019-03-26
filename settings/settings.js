@@ -79,18 +79,18 @@ function onHomeyReady(homeyReady){
         methods: {
             getZones() {
                 return Homey.api('GET', '/zones', null, (err, result) => {
-                    if (err) return Homey.alert(err);
+                    //if (err) return Homey.alert(err);
                     //if (err) {
                     //    setTimeout(() => this.getZones(), 1000);
                     //    return;
                     //}
-                    this.zones = result;
+                    this.zones = result || {};
                 });
             },
             getDevices() {
                 return Homey.api('GET', '/devices', null, (err, result) => {
                     loading = false;
-                    if (err) return Homey.alert(err);
+                    //if (err) return Homey.alert(err);
                     //if (err) {
                     //    setTimeout(this.getDevices(), 1000);
                     //    return;
